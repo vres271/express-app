@@ -1,10 +1,10 @@
 import express, { query } from 'express';
 
-const app = express()
+export const app = express()
 const port = 3038
 
-const HTTP_STATUSES = {
-    OK_200: 200,
+export const HTTP_STATUSES = {
+    OK_200: 200,  
     CREATED_201: 201,
     NO_CONTENT_204: 204,
 
@@ -100,6 +100,11 @@ app.put('/courses/:id',(req,res)=>{
         res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
         return
     }
+})
+
+app.delete('/__test__/data',(req,res)=>{
+    db.courses = [];
+    res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
 })
 
 app.listen(port, ()=>{
