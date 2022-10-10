@@ -95,7 +95,7 @@ app.put('/courses/:id',(req,res)=>{
     const founded = db.courses.find(item=>item.id=== +req.params.id)
     if(founded) {
         founded.title = req.body.title
-        res.json(founded)
+        res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
     } else {
         res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
         return
